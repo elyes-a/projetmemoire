@@ -1,0 +1,3 @@
+cet page manque une animation pour les alert(ajax et une animation pour le passage entre login et registre)
+mon modele est celui de 00webhost :
+https://www.000webhost.com/forum/t/php-data-object-pdo/31705/4(login form)
