@@ -17,7 +17,7 @@ body {
 .register-page {
  
     margin-top: 3%;
-}
+} 
 .form {
 margin: auto auto 7%; 
      padding: 1rem 0 1rem 0;}
@@ -92,10 +92,40 @@ footer{
   }
   /*mes alert*/
   .alert-danger{
-  color: #f7051c;
+    color: #f7051c;
     background-color: #f3d2e4f7;
     border-color: #f5c6cb;
     width: 200px;
     margin: auto;
     padding: 0px 4px 0px 4px;
     margin-bottom: 5px;}
+/*head */
+  .img_rep_tun{
+    width:120px; 
+    height:60px;}
+  #head{background-color: white;}
+/*for mobile*/
+  @media only screen and (max-width: 425px){
+    h1{font-size: 1.5rem;}
+    #head{margin-bottom: 5%;}
+    .img_rep_tun{
+      width:80px; 
+      height:30px;}
+    small{font-size: 64%}
+    #title{font-size: 1.5rem;}
+    #under-title{
+      padding-bottom: 2%;
+      font-size: 1rem;}
+    footer{
+      padding: 0.5rem;}
+    #footer{
+      position:inherit; 
+      height: auto;
+      padding:0.5rem;
+      font-size: 0.8rem;
+      justify-content: center;
+     display: flex;
+     margin-top: 3%;
+    }
+    .form{margin: auto;}
+  }

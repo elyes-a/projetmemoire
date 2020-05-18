@@ -16,15 +16,13 @@ require 'registration/processregis.php';
 </head>
 <body>
 
-<div style="background-color:white;"><!-- entete-->
+<div id="head"><!-- entete-->
   <center><!--Animated flag gif may be downloaded free of charge in this web-->
-    <img src="css/Tunisia_240-animated-flag-gifs.gif" width="120" height="60" alt="république tunisienne" class="img_rep_tun" ></center>
-  <span>
-    <div><center ><strong><b> la république tunisienne|miministère de l'éducation </b></strong></center></div></span>
-  <h1><!--titre et sous titre-->
-    <span > <center> <strong> <a href="index-i.php">le portail de la physique en tunis 2</a></strong> </center> </span>
-    <span><center> <h3>Le lien entre l’enseignant et l’élève</h3> </center> </span>
-  </h1>
+    <img src="css/Tunisia_240-animated-flag-gifs.gif"alt="république tunisienne" class="img_rep_tun" ></center>
+    <small><center id="img-title"> la république tunisienne|miministère de l'éducation</center></small> 
+  <h1 id="title"><!--titre et sous titre-->
+     <center> <strong> <a href="index-i.php">le portail de la physique en tunis 2</a></strong> </center></h1>
+  <h3 id="under-title"><center>Le lien entre l’enseignant et l’élève </center></h3>
 </div>
 
 <div class="login-page container">
