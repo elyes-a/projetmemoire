@@ -1,9 +1,93 @@
-body{
-  background-image: url(../../css/photo-mur-gris.jpg);
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Tangerine:wght@700&display=swap');
+body{ background-image: url(../../css/photo-mur-gris.jpg);}
+#myTable .description{
+  font-family:'Dancing Script', cursive;
+  font-size: 1.5rem;
+}
+  h6 > a{
+    font-family: 'Tangerine', serif;
+    font-size: 2rem;
+  }
+  h1{margin-bottom: 1%;
+}
+  #jumbotron{
+    padding: 0px;
+    background-color: black;
+    background-image: url(../../css/cadre-or.png);
+    background-size: auto;
+    background-repeat: round;
+    height: fit-content;
+}
+.head h1{margin-top: auto;}
+blockquote{
+padding: 1px 20px;
+margin: 0 0 10px;}
+.jumbotron p{
+margin-bottom: 0px;
+    font-size: 19px;
+    font-weight: 200;}
+
+    .jumbotron .btn {
+    padding: 8px 8px;
+    font-size: 14px;
+}
+.jumbetron{
+  margin: 0px 13px;
 }
 @media (min-width: 992px){
+#tab{
+    width: 920px;}
 .container {
-     width: 750px; 
+    width:  625px;
+}
+  }
+    .pager {
+    margin: 0px 0;}
+    .head {
+    padding-bottom: 1%;}
+    img{
+    width:70px;height:30px;
+    }
+    small {
+    font-size: 83%;}
+    .page-link{
+      margin-bottom: 5px;
+      margin-left: 1px;
+    }
+    .pagination{position: fixed;}
+    @media only screen and (max-width: 480px) {
+  /* For mobile phones: */
+  .btn-group {display: table-cell;float: none;}
+  .col-lg-3{margin-left: 0;}
+  .jumbotron p {font-size: 0.95rem;}
+  .jumbotron span {font-size: 12px;}
+  .jumbotron h4 {font-size: 1rem;}
+  h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+  }
+  .blockquote {
+    margin-bottom: 0rem;
+    font-size: 0.78rem;
+  }
+  #trim{display: inherit;}
+  #myBtn {bottom: 63px;}
+}
+@media only screen and (max-width: 425px) {
+  .page-link{
+      margin: 0;
+      padding: .4rem .65rem;
+    }
+  #trim{
+    display: block;
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 576px) {
+.pagination {position: unset;}}
+@media (min-width: 992px){
+.container {
+  width: 750px; 
 }}
 /* Main marketing message and sign up button */
 .jumbotron {
@@ -46,6 +130,9 @@ body{
   width: 100%;
   border: 1px solid #ddd;
   font-size: 18px;
+  background-color: white;
+  margin: 5px 0px;
+  padding: 0;width: 100%;
 }
 #myTable th, #myTable td {
   text-align: left;
@@ -60,19 +147,14 @@ body{
 #myTable tr.header {
   background-color: #f1f1f1;
 }
- #myTable tr:hover {
+#myTable tr:hover {
   background-color: #e3fb0485;
 }
 /*bouton pagination*/
 .btn-group>.btn {
-     float: unset;
+  float: unset;
 }
 @media (min-width: 768px){
   .col-sm-4 {
     width: unset;float: unset;}
 }
-
-/*footer h3{ font-size: 200% ;}
-  .footer-text { 
-    font-weight: bold;
-    color :red;}*/

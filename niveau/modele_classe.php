@@ -1,7 +1,6 @@
  <?php require "../includes/connect_db.php" ;
   ?>
   <!--source html https://getbootstrap.com/docs/3.4/examples/justified-nav/#-->
-
  <link rel="stylesheet" type="text/css" href="css/style_classe.css">
  <style type="text/css">
    .head h1{margin-top: auto;}
@@ -64,12 +63,20 @@ margin-bottom: 0px;
   }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script type="text/javascript">
+  Swal.fire({
+  title: 'Inscrivez Vous pour avoir un contenu plus approprié.',
+  icon: 'info',
+  html:
+    '<a class="btn btn-lg btn-success" href="../registration.php" role="button">inscription</a> ',
+  showConfirmButton:false,
+  showCloseButton: true,
 
+})
+</script>
   <div class="jumbotron">
-    <h1><?php echo $title;?></h1>
-    <p class="lead"> On Fournit tous les documents dont l'élève tunisien a besoin: cour, devoir, séries exercices ... etc.</p>
-    <strong>Inscrivez Vous pour avoir un contenu approprié .</strong>
-    <p><a class="btn btn-lg btn-success" href="../registration.php" role="button">inscription</a></p>
+    <h1><p class="lead"> bienvenus au niveau </p> <?php echo $title;?></h1>
     <blockquote class="blockquote">
     <h4>“Nous sommes frères par la nature, mais étrangers par l'éducation.”
     </h4>
