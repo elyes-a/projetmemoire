@@ -25,103 +25,13 @@ $Type=array("cour", "devoir", "exercices");
  <!--stylesheet-->
  <link rel="stylesheet" href="css/style_affiche_file.css">
  <link rel="stylesheet"href="https://fonts.googleapis.com/css?family=Tangerine">
- <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-<style type="text/css">
-#myTable .description{
-  font-family:'Dancing Script', cursive;
-  font-size: 1.5rem;
-}
-  h6 > a{
-    font-family: 'Tangerine', serif;
-    font-size: 3rem;
-  text-shadow: 4px 4px 4px #aaa;
-  }
-  h1{margin-bottom: 1%;
-}
-.head h1{margin-top: auto;}
-blockquote{
-padding: 1px 20px;
-margin: 0 0 10px;}
-.jumbotron p{
-margin-bottom: 0px;
-    font-size: 19px;
-    font-weight: 200;}
-
-    .jumbotron .btn {
-    padding: 8px 8px;
-    font-size: 14px;
-}
-.jumbetron{
-  margin: 0px 13px;
-}
-@media (min-width: 992px){
- #tab{
-    width: 920px;}
-.container {
-    width:  625px;
-}
-  }
-    .pager {
-    margin: 0px 0;}
-    .head {
-    padding-bottom: 1%;}
-    img{
-    width:70px;height:30px;
-    }
-    small {
-    font-size: 83%;}
-    .page-link{
-      margin-bottom: 5px;
-      margin-left: 1px;
-    }
-    .pagination{position: fixed;}
-    @media only screen and (max-width: 425px) {
-  /* For mobile phones: */
-  .btn-group {display: table-cell;float: none;}
-  .col-lg-3{margin-left: 0;}
-  .jumbotron p {font-size: 0.95rem;}
-  .jumbotron span {font-size: 12px;}
-  .jumbotron h4 {font-size: 1rem;}
-  h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.2rem;
-  }
-  .blockquote {
-    margin-bottom: 0rem;
-    font-size: 0.78rem;
-  }
-  #trim{display: inherit;}
-  #myBtn {bottom: 63px;}
-}
-@media only screen and (max-width: 425px) {
-  .page-link{
-      margin: 0;
-      padding: .4rem .65rem;
-    }
-  #trim{
-    display: block;
-    justify-content: center;
-  }
-}
-@media only screen and (max-width: 576px) {
-.pagination {position: unset;}}
-</style>
 <div class="container-fluid">
   <div class="row justify-content-lg-center">
-    <div class="col-sm-3" style="
-    
-    padding: 0px;
-    background-color: black;
-    background-image: url(../css/cadre-or.png);
-    background-size: auto;
-    background-repeat: round;
-    height: fit-content;">
+    <div id="jumbotron" class="col-sm-3">
       <div class="jumbotron">
     <!--<h2>Vous cherchez :</h2>-->
     <h1><?php echo $title ?></h1>
     <p class="lead"> On met à votre disposition une collection de document.</p>
-    <span>Inscrivez Vous pour avoir un contenu approprié .</span>
-    <p><a class="btn btn-lg btn-success" href="../registration.php" role="button">inscription</a></p>
     <blockquote class="blockquote">
     <h4>“Children must be taught how to think, not what to think.”
     </h4>
@@ -163,10 +73,7 @@ margin-bottom: 0px;
     /*existe un probleme a corriger de taille il envoie les fichiers de faibles taille*/
   ?>
   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="chercher par mot clé.." title="Tapez un Titre">
-  <table id="myTable" style="
-    background-color: white;
-    margin: 5px 0px;
-    padding: 0;width: 100%;">
+  <table id="myTable">
     <tr class="header">
       <th style="width:50%;">Titre</th>
       <th style="width:50%;">description</th>
