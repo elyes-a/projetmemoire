@@ -68,7 +68,7 @@ $Type=array("cour", "devoir", "exercices");
     <div class="col-sm-7">
       <?php
     //affichage des lien de telechargement
-    $sql="SELECT nom , file_dest , nom_prof ,description,annee FROM files where (`classe`= '$classe' and (`type` LIKE '$type1%') and (`titre` LIKE '%$trim'))";
+    $sql="SELECT id, nom , file_dest , nom_prof ,description,annee FROM files where (`classe`= '$classe' and (`type` LIKE '$type1%') and (`titre` LIKE '%$trim'))";
     $req = $db->query($sql);
     /*existe un probleme a corriger de taille il envoie les fichiers de faibles taille*/
   ?>
@@ -79,29 +79,36 @@ $Type=array("cour", "devoir", "exercices");
       <th style="width:50%;">description</th>
     </tr>
   <?php  
-    while($data = $req->fetch()){
+    while($data = $req->fetch()):?>
+  <?php
+    $id_files=$data['id'];
+    $sql="SELECT COUNT(id_likes) FROM likes where (`id_files`= '$id_files')";
+    $nb_likes = $db->query($sql);
+    $nb_likes = $nb_likes->fetchColumn();
+    $sql="SELECT COUNT(id_dislikes) FROM dislikes where (`id_files`= '$id_files')";
+    $nb_dislikes = $db->query($sql);
+    $nb_dislikes =$nb_dislikes->fetchColumn();
     $nom_fichier1=strchr($data['nom'], "_",true);
     $nom_fichier2=strchr($data['nom'], ".");
-    $nom_fichier=$nom_fichier1.$nom_fichier2;
-    echo '<tr>
-
+    $nom_fichier=$nom_fichier1.$nom_fichier2; ?>
+    <tr>
           <td>
-            <h6><a href="'.$data['file_dest'].'" target="_blank"><strong>'.$nom_fichier.'</strong></a>
+            <h6><a href="<?= $data['file_dest']?>" target="_blank"><strong> <?= $nom_fichier ?></strong></a>
             <p><small>
-              <i class="fa fa-user" aria-hidden="true"></i>'.$data['nom_prof'].'
-              <i class="fa fa-calendar" aria-hidden="true"></i>'.$data['annee'] .'
-              <span class="badge badge-secondary"> 145 <a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+              <i class="fa fa-user" aria-hidden="true"></i><?= $data['nom_prof'] ?>
+              <i class="fa fa-calendar" aria-hidden="true"></i><?= $data['annee'] ?>
+              <span class="badge badge-secondary"> <?= $nb_likes ?> <a href="like.php?t=1&id=<?=$id_files?>"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                            </span>
+              <span class="badge badge-secondary"> <?= $nb_dislikes ?> <a href="like.php?t=-1&id=<?=$id_files?>"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
                             </span>
             </small></p>
             </h6>
             </td>
-          <td class="description">'.$data['description'].'</td>
-        </tr>';}
-  ?>
+          <td class="description"><?= $data['description'] ?></td>
+        </tr>
+    <?php endwhile ?>
   </table>
     </div>
-    
-    
   </div>
 </div>
 <script>
