@@ -5,7 +5,6 @@
 class vote 
 {
   private $db;
-  private $former_vote;//stocker le vote precedent
   public function __construct(PDO $db){
     $this->db = $db ;
   }
@@ -20,26 +19,30 @@ class vote
     $val=$req->fetchColumn();
     if($val == $vote_val){
       $ins =$this->db->query("UPDATE likes SET `value`= '2' WHERE (id_files=$id_files and id_user=$id_user)");
-      if ($val = 1) {
-        $ins =$this->db->query("UPDATE files SET `likes_count`= {likes_count - 1} WHERE id=$id_files");
-      }else{$ins =$this->db->query("UPDATE files SET `dislikes_count`= {dislikes_count - 1} WHERE id=$id_files ");}
+      $this->update_count2($id_files,$vote_val,-1);
     }
     elseif(empty($val)){
       $ins = $this->db->prepare("INSERT INTO likes (id_files, id_user,value) VALUES (?,?,?) ");
       $ins->execute(array($id_files,$id_user,$vote_val));
+      $this->update_count2($id_files,$vote_val,1);
     }
     else{
-      $del = $this->db->query("UPDATE likes SET `value`= {$vote_val} WHERE id_files=$id_files and id_user=$id_user");}
-    if ($vote_val = 1) {
-        $ins =$this->db->query("UPDATE files SET likes_count = likes_count + 1 WHERE id=$id_files ");
-      }else{$ins =$this->db->query("UPDATE files SET dislikes_count = dislikes_count + 1 WHERE id=$id_files ");}
+      $del = $this->db->query("UPDATE likes SET `value`= {$vote_val} WHERE id_files=$id_files and id_user=$id_user");
+      $this->update_count2($id_files,$vote_val,1);
+    }
     return true;
   }
   //permet de definir un class css like ou dislike
   public static function getclass($vote){
-    if ($vote==1) {return 'like';}
-    elseif ($vote== -1) {return 'dislike';}
+    if ($vote==1) {return 'is_liked';}
+    elseif ($vote== -1) {return 'is_disliked';}
     else { return null ;}
+  }
+  private function update_count2($id_files,$vote_val,$add){
+    if ($vote_val == 1) {
+        $ins =$this->db->query("UPDATE files SET `likes_count` = `likes_count` + $add WHERE id=$id_files ");
+      }else{$ins =$this->db->query("UPDATE files SET `dislikes_count` = `dislikes_count` + $add WHERE id=$id_files ");}
+      return true ;
   }
   public function update_count($id_files){
     $req = $this->db->prepare("SELECT COUNT(id_likes) as count ,value from likes WHERE id_files = ? GROUP BY value");

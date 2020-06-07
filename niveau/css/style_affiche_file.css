@@ -116,7 +116,7 @@ margin-bottom: 0px;
   font-size: 18px; /* Increase font size */
 }
 #myInput {
-  background-image: url('https://www.w3schools.com/css/searchicon.png');
+  background-image: url('../../css/searchicon.png');
   background-position: 10px 10px;
   background-repeat: no-repeat;
   width: 100%;
@@ -164,9 +164,9 @@ margin-bottom: 0px;
   background: transparent;
   color: white;
 }
-.vote1:hover,.like .vote1{
+.is_liked .vote1{
   color:#11ff21;
 }
-.vote-1:hover,.dislike .vote-1{
+.is_disliked .vote-1{
   color:red;
 }

@@ -90,29 +90,25 @@ $Type=array("cour", "devoir", "exercices");
     $nom_fichier2=strchr($data['nom'], ".");
     $nom_fichier=$nom_fichier1.$nom_fichier2;
     var_dump($id_user);
-    $req1=$db->prepare("SELECT value FROM likes where (`id_files`= ? and `id_user`= ?)");
+    $req1=$db->prepare("SELECT * FROM likes where (`id_files`= ? and `id_user`= ?)");
     $req1->execute(array($id_files,$id_user));
-    $vote= $req1->fetch();
+    $vote= $req1->fetch(PDO::FETCH_ASSOC);
+     echo '$vote=  ';var_dump($vote);
+     $vote_val=$vote['value'];
      ?>
     <tr>
           <td>
             <h6><a href="<?= $data['file_dest']?>" target="_blank"><strong> <?= $nom_fichier ?></strong></a>
-            <div class="<?= vote::getclass($vote[0]);?>"><small>
+            <div class="<?= vote::getclass($vote_val);?>" id="vote" data-id_files="<?=$id_files?>" data-id_user="<?=$id_user?>" data-x_vote="<?=$vote_val?>"><small>
               <i class="fa fa-user" aria-hidden="true"></i><?= $data['nom_prof'] ?>
               <i class="fa fa-calendar" aria-hidden="true"></i><?= $data['annee'] ?>
                </small>
-                <form action="like.php?t=1&id=<?=$id_files?>&id_user=<?=$id_user?>" method="POST">
-                  <span class="badge badge-secondary"> <?= $likes_count ?>
-                  <button type="submit" class="btn-vote vote1"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                  <span class="badge badge-secondary"> <span id="likes_count"><?= $likes_count ?></span>
+                  <button class="btn-vote vote1" title="j'aime ce contenu"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
                 </span>
-                </form>
-               
-                <form action="like.php?t=-1&id=<?=$id_files?>&id_user=<?=$id_user?>" method="POST">
-                  <span class="badge badge-secondary"> <?= $dislikes_count ?>
-                  <button type="submit" class="btn-vote vote-1"> <i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+                <span class="badge badge-secondary"> <span id="dislikes_count"><?= $dislikes_count ?></span>
+                  <button class="btn-vote vote-1" title="je n'aime pas ce contenu"> <i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
                 </span>
-                </form>
-              
             </div>
             </h6>
             </td>
@@ -170,6 +166,5 @@ function topFunction() {
 }
 
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="../js/app.js"></script>
 <?php include '../modele_page_cour/footer2.html'; ?>
