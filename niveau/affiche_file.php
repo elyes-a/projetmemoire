@@ -99,15 +99,15 @@ $Type=array("cour", "devoir", "exercices");
     <tr>
           <td>
             <h6><a href="<?= $data['file_dest']?>" target="_blank"><strong> <?= $nom_fichier ?></strong></a>
-            <div class="<?= vote::getclass($vote_val);?>" id="vote" data-id_files="<?=$id_files?>" data-id_user="<?=$id_user?>" data-x_vote="<?=$vote_val?>"><small>
+            <div class="vote <?= vote::getclass($vote_val);?>" id="file<?=$id_files?>" data-id_files="<?=$id_files?>" data-id_user="<?=$id_user?>" data-x_vote="<?=$vote_val?>"><small>
               <i class="fa fa-user" aria-hidden="true"></i><?= $data['nom_prof'] ?>
               <i class="fa fa-calendar" aria-hidden="true"></i><?= $data['annee'] ?>
                </small>
-                  <span class="badge badge-secondary"> <span id="likes_count"><?= $likes_count ?></span>
-                  <button class="btn-vote vote1" title="j'aime ce contenu"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                  <span class="badge badge-secondary"> <span id="likes_count<?=$id_files?>"><?= $likes_count ?></span>
+                  <button class="btn-vote vote1" title="j'aime ce contenu" data-id_files="<?=$id_files?>"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
                 </span>
-                <span class="badge badge-secondary"> <span id="dislikes_count"><?= $dislikes_count ?></span>
-                  <button class="btn-vote vote-1" title="je n'aime pas ce contenu"> <i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+                <span class="badge badge-secondary"> <span id="dislikes_count<?=$id_files?>"><?= $dislikes_count ?></span>
+                  <button class="btn-vote vote-1" title="je n'aime pas ce contenu" data-id_files="<?=$id_files?>"> <i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
                 </span>
             </div>
             </h6>
