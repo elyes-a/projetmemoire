@@ -1,4 +1,7 @@
-<?php require 'registration/processregis.php' ;?>
+<?php 
+require_once 'registration/processregis.php' ;
+/*var_dump(session_status());var_dump($_SESSION);*/
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +18,7 @@
  The list of all Font Awesome icons can be found here: https://www.w3schools.com/icons/default.asp-->
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
  <link href="https://getbootstrap.com/docs/4.4/examples/carousel/carousel.css" rel="stylesheet">
- <link rel="stylesheet" href="css/styleindex-c-28_4.css">
+ <link rel="stylesheet" href="css/styleindex.css">
  <!-- Title -->
  <title>le portail de la physique de tunis 2</title>
 <!--les sources javascript doit etre avant les script-->
@@ -40,15 +43,15 @@
   'success')
 </script>
 
-  <div class="row">
-    <a href="index.php?logout='1'" class="btn btn-danger " role="button">déconnection</a>
-    <div class="">
-      <img class="mx-auto d-block" src="css/Tunisia_240-animated-flag-gifs.gif" width="120" height="60" alt="république tunisienne">
+  <div style="background-color:white;padding-bottom: 1rem;">
+  <a href="niveau/upload.php" class="btn btn-info" role="button"><i class="fas fa-cloud"></i>  partagez vos fichiers</a>
+    <center>
+      <img src="css/Tunisia_240-animated-flag-gifs.gif" width="120" height="60" alt="république tunisienne" class="img_rep_tun"></center>
     <span><!--Animated flag gif may be downloaded free of charge in this web-->
-    <div><center ><strong><b> la république tunisienne|miministère de l'éducation </b></strong></center></div></span>
-    </div>
-    <a href="niveau/upload.php" class="btn btn-info " role="button"><i class="fas fa-cloud"></i>  partagez vos fichiers</a>
-  </div>
+    <center> la république tunisienne|miministère de l'éducation </center></span>
+    
+  
+  <!--titre et sous titre-->
 
   <!--titre et sous titre-->
 
@@ -56,9 +59,6 @@
   <span class="titre"> <center> <strong> le portail de la physique en tunis 2</strong> </center> </span>
   <span class="sous-titre"><center> <h3>Le lien entre l’enseignant et l’élève</h3> </center> </span>
 </h1>
-<div class="container">
-  
-
 <!-- navbar -->
   <nav class="navbar navbar-expand-md navbar-dark  bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,13 +67,18 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
      
       <ul class=" nav navbar-nav mr-auto ">
-          <li class='nav-item'>
-            <a class="navbar-brand" href="#">
-           <img class="rounded-circle" src="<?php echo $data['image_url'] ?>" alt="user img" style="width:40px;">
+        <li class="nav-item dropdown"><!--profil-->
+          <a class="navbar-brand dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="rounded-circle" src="<?php echo $data['image_url'] ?>" alt="user img" style="width:40px;">
            <?php echo $username ?></a>
-         </li>
+          <ul class="dropdown-menu" aria-labelledby="dropdown1">
+            <li class="dropdown-item" >
+              <button class="nestedmenu btn btn-danger" href="index.php?logout='1'"> déconnection </button>
+            </li>
+          </ul>
+        </li>
             <?php endif ?>
-<li class="nav-item active"><!--home-->
+        <li class="nav-item active"><!--home-->
           <a class="nav-link" href="index.php"> 
             <svg class="bi bi-house-door" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 01.708 0l6 6a.5.5 0 01.146.354v7a.5.5 0 01-.5.5H9.5a.5.5 0 01-.5-.5v-4H7v4a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5v-7a.5.5 0 01.146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 01.5-.5h3a.5.5 0 01.5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" clip-rule="evenodd"/>
@@ -131,61 +136,11 @@
               </ul></li>
           </ul>
         </li>
-        <li class="nav-item dropdown"><!--espace prof-->
-          <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">espace enseigant</a>
-          <ul class="dropdown-menu" aria-labelledby="dropdown1">
-            <li class="dropdown-item" ><a href="document-pédagogique.php">document pédagogique</a></li>
-            <li class="dropdown-item dropdown"><!--college-->
-              <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">collège</a>
-              <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/7eme-annee.php">7ème de base</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/8eme-annee.php">8ème de base</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/9eme-annee.php">9ème de base</a></li>
-              </ul>
-            </li>
-            <li class="dropdown-item" ><a class="nestedmenu" href="niveau/1ere-annee.php">1ère secondaire</a></li>
-            <li class="dropdown-item dropdown"><!--2-->
-              <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">2ème secondaire</a>
-              <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/2i.php">Technologie de l’informatique</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/2s.php">Sciences</a></li>
-              </ul></li>
-            <li class="dropdown-item dropdown"><!--3-->
-              <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">3ème secondaire</a>
-              <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/3i.php">science informatique</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/3m.php">mathématique</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/3t.php">Technique</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/3s.php">Sciences exprimentales</a></li>
-              </ul></li>
-            <li class="dropdown-item dropdown"><!--4-->
-              <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">4ème secondaire</a>
-              <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/4i.php">science informatique</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/4m.php">mathématique</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/4t.php">Technique</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/4s">Sciences exprimentales</a></li>
-              </ul></li>
-          </ul>
-        </li>
+        
         <li class='nav-item'><!--contact-->
-          <a class="nav-link" href='contact/contact.php' title='contact'> 
-            contact 
-          </a>
-        </li>
+          <a class="nav-link" href='contact/contact.php' title='contact'>contact </a></li>
+        <li class="nav-item" ><!--document pédagogique-->
+          <a class="nav-link" href="document-pédagogique.php">document pédagogique</a></li>
         <li class='nav-item'><!-- news-->
           <a class="nav-link" href='news.php'>
           <svg class="bi bi-info-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -209,11 +164,12 @@
       <li data-target="#myCarousel" data-slide-to="1"></li>
       <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
+    <div class="carousel-inner" style="margin-left: 5%;
+    margin-right: 5%;max-width: 100%;width: unset;">
       <div class="carousel-item active">
         <!--la balise <svg> est utile pour appeler le SVG dans un document HTML. Le SVG est un format d’image XML, qui vous donne la possibilité de créer des formes simples et complexes à intégrer dans votre document HTML sans recourir à des logiciels PAO.-->
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="red"/></svg>
-        <div class="container">
+        <div style="background-color: white; margin-right: auto; margin-left: auto;"><!--on peut ajouter un class "container" pour l encadrement de la page-->
           <div class="carousel-caption text-left">
             <h1>Example headline.</h1>
             <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -256,7 +212,7 @@
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
 
-  <div class="container marketing">
+  <div class="container marketing" style="background-color: white; margin-right: auto; margin-left: auto;">
 
     <!-- Three columns of text below the carousel -->
     <div class="row">

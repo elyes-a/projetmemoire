@@ -1,6 +1,8 @@
 <?php 
 require "../includes/connect_db.php" ;
+require '../class/vote.php';
 $title1=$type1=$classe="x";$trim="";$style="display:none;";
+$id_user = "4";//$_SERVER['REMOTE_ADDR']
 if (!empty($_GET)) {
   $trim  =$_GET['trim'];
   $classe=$_GET['classe'];
@@ -68,7 +70,7 @@ $Type=array("cour", "devoir", "exercices");
     <div class="col-sm-7">
       <?php
     //affichage des lien de telechargement
-    $sql="SELECT id, nom , file_dest , nom_prof ,description,annee FROM files where (`classe`= '$classe' and (`type` LIKE '$type1%') and (`titre` LIKE '%$trim'))";
+    $sql="SELECT * FROM files where (`classe`= '$classe' and (`type` LIKE '$type1%') and (`titre` LIKE '%$trim'))";
     $req = $db->query($sql);
     /*existe un probleme a corriger de taille il envoie les fichiers de faibles taille*/
   ?>
@@ -82,26 +84,32 @@ $Type=array("cour", "devoir", "exercices");
     while($data = $req->fetch()):?>
   <?php
     $id_files=$data['id'];
-    $sql="SELECT COUNT(id_likes) FROM likes where (`id_files`= '$id_files')";
-    $nb_likes = $db->query($sql);
-    $nb_likes = $nb_likes->fetchColumn();
-    $sql="SELECT COUNT(id_dislikes) FROM dislikes where (`id_files`= '$id_files')";
-    $nb_dislikes = $db->query($sql);
-    $nb_dislikes =$nb_dislikes->fetchColumn();
+    $likes_count=$data['likes_count'];
+    $dislikes_count=$data['dislikes_count'];
     $nom_fichier1=strchr($data['nom'], "_",true);
     $nom_fichier2=strchr($data['nom'], ".");
-    $nom_fichier=$nom_fichier1.$nom_fichier2; ?>
+    $nom_fichier=$nom_fichier1.$nom_fichier2;
+    /*var_dump($id_user);*/
+    $req1=$db->prepare("SELECT * FROM likes where (`id_files`= ? and `id_user`= ?)");
+    $req1->execute(array($id_files,$id_user));
+    $vote= $req1->fetch(PDO::FETCH_ASSOC);
+     /*echo '$vote=  ';var_dump($vote);*/
+     $vote_val=$vote['value'];
+     ?>
     <tr>
           <td>
             <h6><a href="<?= $data['file_dest']?>" target="_blank"><strong> <?= $nom_fichier ?></strong></a>
-            <p><small>
+            <div class="vote <?= vote::getclass($vote_val);?>" id="file<?=$id_files?>" data-id_files="<?=$id_files?>" data-id_user="<?=$id_user?>" data-x_vote="<?=$vote_val?>"><small>
               <i class="fa fa-user" aria-hidden="true"></i><?= $data['nom_prof'] ?>
               <i class="fa fa-calendar" aria-hidden="true"></i><?= $data['annee'] ?>
-              <span class="badge badge-secondary"> <?= $nb_likes ?> <a href="like.php?t=1&id=<?=$id_files?>"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
-                            </span>
-              <span class="badge badge-secondary"> <?= $nb_dislikes ?> <a href="like.php?t=-1&id=<?=$id_files?>"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
-                            </span>
-            </small></p>
+               </small>
+                  <span class="badge badge-secondary"> <span id="likes_count<?=$id_files?>"><?= $likes_count ?></span>
+                  <button class="btn-vote vote1" title="j'aime ce contenu" data-id_files="<?=$id_files?>"><i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+                </span>
+                <span class="badge badge-secondary"> <span id="dislikes_count<?=$id_files?>"><?= $dislikes_count ?></span>
+                  <button class="btn-vote vote-1" title="je n'aime pas ce contenu" data-id_files="<?=$id_files?>"> <i class="fa fa-thumbs-down" aria-hidden="true"></i></button>
+                </span>
+            </div>
             </h6>
             </td>
           <td class="description"><?= $data['description'] ?></td>
@@ -158,4 +166,5 @@ function topFunction() {
 }
 
 </script>
+<script src="../js/app.js"></script>
 <?php include '../modele_page_cour/footer2.html'; ?>
