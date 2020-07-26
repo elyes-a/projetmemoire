@@ -89,11 +89,11 @@ $Type=array("cour", "devoir", "exercices");
     $nom_fichier1=strchr($data['nom'], "_",true);
     $nom_fichier2=strchr($data['nom'], ".");
     $nom_fichier=$nom_fichier1.$nom_fichier2;
-    var_dump($id_user);
+    /*var_dump($id_user);*/
     $req1=$db->prepare("SELECT * FROM likes where (`id_files`= ? and `id_user`= ?)");
     $req1->execute(array($id_files,$id_user));
     $vote= $req1->fetch(PDO::FETCH_ASSOC);
-     echo '$vote=  ';var_dump($vote);
+     /*echo '$vote=  ';var_dump($vote);*/
      $vote_val=$vote['value'];
      ?>
     <tr>

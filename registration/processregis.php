@@ -1,7 +1,7 @@
 <?php
 session_start();
 /*inclure le fechier de connection "connect_db.php" a la base de donnée*/
-require 'includes/connect_db.php';
+require_once 'includes/connect_db.php';
 /*  //creation tableau dans la bd
  $a=file_get_contents('bd_util.sql');
  $res=$db->prepare($a);
@@ -21,8 +21,8 @@ if (isset($_POST['create'])){
    $data=($data2 or $data3);
    if($data2==$data3){$error1="nom et email déja utilisée ";$error2="";}
   if(!$data){//stocker info.du utilisateur dans la base de donnees utilisateur 
-    //sha1 fait le cryptage des mots de passe
-    $password= sha1($_POST['password']);
+    //password_hash fait le cryptage des mots de passe
+    $password= password_hash($_POST['password'],PASSWORD_BCRYPT);
     //enregistrement de l'image
     $file_name = $_FILES['avatar']['name'];
     if(!empty($file_name) ) {
@@ -47,17 +47,18 @@ if (isset($_POST['create'])){
 if (isset($_POST['login'])) {
   $user    =$_POST['name'];
   if (verif($user,'name',$db)){
-    $password= sha1($_POST['password']);//sha1 fait le cryptage des mots de passe
-    $nouvelle = "SELECT `id`FROM `utilisateur` WHERE (`name`='$user'and `password`='$password')";
+    $nouvelle = "SELECT `password` FROM `utilisateur` WHERE (`name`='$user')";
     $resultat = $db->query($nouvelle);
-    $data = ($resultat->fetchColumn() > 0) ? true:false;
+    $res=$resultat->fetchColumn();
+    var_dump($res);
+    $data=password_verify($_POST['password'],$res);//the first arg of password_verify is the original password(not hashed)
     $resultat->closeCursor();
     if ($data) { //login user
       $_SESSION['name']=$user;
       $_SESSION['success']='Vous êtes connecté à votre compte';
        header('location:index.php');
     }//end if $data
-    else {$error1= "wrong password";}
+    else {$error1= "wrong password";var_dump($data);}
   }//end if verif
   else{$error1= "wrong username";$user="";}
 }//end if isset
