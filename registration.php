@@ -1,7 +1,7 @@
 <?php
-/*inclure le fechier de connection "connect_db.php" a la base de donnée*/
 require 'registration/processregis.php'; 
-?>
+/*inclure le fechier de connection "connect_db.php" a la base de donnée*/
+?> 
 <!DOCTYPE html>
 <!--  this html and css code is inspired from https://codepen.io/colorlib/pen/rxddKy</!-->
 <html>

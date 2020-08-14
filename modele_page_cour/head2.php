@@ -1,7 +1,9 @@
 <?php
 $origin="";
  $a= htmlentities($_SERVER['PHP_SELF']);
- if((str_word_count($a,0,'0..9')>3)){$origin="../";}
+ if((str_word_count($a,0,'0..9')>3)){$origin="../";
+ //echo "a ".$a."origin= ".$origin;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

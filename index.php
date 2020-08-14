@@ -30,42 +30,37 @@ require_once 'registration/processregis.php' ;
 
 <body>
 <?php if (isset($_SESSION['success'])) :?>
-<?php 
-  $username=$_SESSION['name'];
-  $sql = "SELECT `image_url`  FROM `utilisateur` WHERE (`name`='$username')";
-  $res = $db->query($sql);
-  $data = $res->fetch();
-     ?>
-    <script type="text/javascript">
-  Swal.fire(
-  '<?php echo "Bienvenu!  ".$username ; ?>',
-  '<?php echo $_SESSION['success'];?>',
-  'success')
-</script>
+  <?php 
+    $username=$_SESSION['name'];
+    $sql = "SELECT `image_url`  FROM `utilisateur` WHERE (`name`='$username')";
+    $res = $db->query($sql);
+    $data = $res->fetch();
+  ?>
+  <script type="text/javascript">
+    Swal.fire(
+    '<?php echo "Bienvenu!  ".$username ; ?>',
+    '<?php echo $_SESSION['success'];?>',
+    'success')
+  </script>
 
   <div style="background-color:white;padding-bottom: 1rem;">
-  <a href="niveau/upload.php" class="btn btn-info" role="button"><i class="fas fa-cloud"></i>  partagez vos fichiers</a>
+    <a href="niveau/upload.php" class="btn btn-info" role="button"><i class="fas fa-cloud"></i>  partagez vos fichiers</a>
     <center>
-      <img src="css/Tunisia_240-animated-flag-gifs.gif" width="120" height="60" alt="république tunisienne" class="img_rep_tun"></center>
+      <img src="css/Tunisia_240-animated-flag-gifs.gif" width="120" height="60" alt="république tunisienne" class="img_rep_tun">
+    </center>
     <span><!--Animated flag gif may be downloaded free of charge in this web-->
     <center> la république tunisienne|miministère de l'éducation </center></span>
-    
-  
-  <!--titre et sous titre-->
-
-  <!--titre et sous titre-->
-
-<h1>
-  <span class="titre"> <center> <strong> le portail de la physique en tunis 2</strong> </center> </span>
-  <span class="sous-titre"><center> <h3>Le lien entre l’enseignant et l’élève</h3> </center> </span>
-</h1>
+    <!--titre et sous titre-->
+    <h1>
+      <span class="titre"> <center> <strong> le portail de la physique en tunis 2</strong> </center> </span>
+      <span class="sous-titre"><center> <h3>Le lien entre l’enseignant et l’élève</h3> </center> </span>
+    </h1>
 <!-- navbar -->
   <nav class="navbar navbar-expand-md navbar-dark  bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
-     
       <ul class=" nav navbar-nav mr-auto ">
         <li class="nav-item dropdown"><!--profil-->
           <a class="navbar-brand dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -77,7 +72,6 @@ require_once 'registration/processregis.php' ;
             </li>
           </ul>
         </li>
-            <?php endif ?>
         <li class="nav-item active"><!--home-->
           <a class="nav-link" href="index.php"> 
             <svg class="bi bi-house-door" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -155,8 +149,9 @@ require_once 'registration/processregis.php' ;
       <form class="navbar-form navbar-left" role="search">
       <input type="text" class="form-control" id="cherche" placeholder="  chercher un document">
       </form>
-  </div>
+    </div>
   </nav>
+<?php endif ?>
 <main role="main">
   <div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel" data-pause="hover">
     <ol class="carousel-indicators">

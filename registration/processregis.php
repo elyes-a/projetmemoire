@@ -50,7 +50,7 @@ if (isset($_POST['login'])) {
     $nouvelle = "SELECT `password` FROM `utilisateur` WHERE (`name`='$user')";
     $resultat = $db->query($nouvelle);
     $res=$resultat->fetchColumn();
-    var_dump($res);
+    //var_dump($res);
     $data=password_verify($_POST['password'],$res);//the first arg of password_verify is the original password(not hashed)
     $resultat->closeCursor();
     if ($data) { //login user

@@ -93,7 +93,7 @@ margin-bottom: 0px;
           echo '
           <div class="col-md-4">
             <div class="">
-              <div class="card">
+              <div class="card" title="clic pour voir le contenu";>
                 <div  data-toggle="collapse" href="#collapse'.$j.'">
                     <h4 class="card-header">'.$v.'  <span title="le nombre des meilleurs documents" class="badge badge-pill badge-dark"> 3</span>
                   </h4>
