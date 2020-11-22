@@ -38,13 +38,12 @@ require 'registration/processregis.php';
       <b class="message">Vous n'avez pas de compte ?<a href="registration.php">Créer un Compte</a></b>
   </form>
 </div>
-</div>
+</div> 
 <footer >
   <b>&copy; 2019-2020 le portail de la physique en tunis 2 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></b>
 </footer>
 
-<script type="text/javascript" src="jquery-3.4.1.min.js
-"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <!--lier la page html et instruction javascript
 <script type="text/javascript" src="register.js"></script>-->

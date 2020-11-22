@@ -1,4 +1,4 @@
- <?php require "../includes/connect_db.php" ;
+ <?php require_once"../includes/connect_db.php" ;
   ?>
   <!--source html https://getbootstrap.com/docs/3.4/examples/justified-nav/#-->
  <link rel="stylesheet" type="text/css" href="css/style_classe.css">
@@ -63,6 +63,8 @@ margin-bottom: 0px;
   }
 }
 </style>
+<?php 
+if (!isset($_SESSION['success'])) :?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
   Swal.fire({
@@ -72,9 +74,9 @@ margin-bottom: 0px;
     '<a class="btn btn-lg btn-success" href="../registration.php" role="button">inscription</a> ',
   showConfirmButton:false,
   showCloseButton: true,
-
-})
+  })
 </script>
+<?php endif ?>
   <div class="jumbotron">
     <h1><p class="lead"> bienvenus au niveau </p> <?php echo $title;?></h1>
     <blockquote class="blockquote">

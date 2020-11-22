@@ -1,180 +1,24 @@
-<?php require "process_upload.php" ;
- ?>
+<?php
+require "process_upload.php" ;
+$title="Partagez Vos Fichiers";
+require_once '../modele_page_cour/head2.php' ;
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html class="supernova">
 <head>
  <link rel="alternate" type="application/json+oembed" href="https://www.jotform.com/oembed/?format=json&amp;url=https%3A%2F%2Fform.jotform.com%2F200973675497571" title="oEmbed Form">
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=1" />
  <link href="css/styles_upload/form.css" rel="stylesheet" type="text/css" />
  <link type="text/css" rel="stylesheet" href="css/styles_upload/nova.css" />
  <link type="text/css" media="print" rel="stylesheet" href="https://cdn.jotfor.ms/css/printForm.css?3.3.16749" />
  <!--nessesaire pou le navbar-->
- <link rel="icon" href="../css/logo site.png">
+ 
  <link type="text/css" rel="stylesheet" href="css/styles_upload/autre.css" />
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="../modele_page_cour/stylemod2.css">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 <!--fin link from head 2-->
- <title> Partagez Vos Fichiers</title>
 </head>
 
 <body>
-<div class="head">
-  <a href="../niveau/upload.php" class="btn btn-info" role="button"><span class="glyphicon glyphicon-cloud"></span>  partagez vos fichiers</a>
-    <center>
-      <img src="../css/Tunisia_240-animated-flag-gifs.gif" width="100" height="40" alt="république tunisienne" class="img_rep_tun" ></center>
-    <!--Animated flag gif may be downloaded free of charge in this web-->
-    <center > <small>la république tunisienne|miministère de l'éducation</small></center>
-    <!--titre et sous titre-->
-  <h1>
-  <span class="titre"> <center> <strong> <a href="../index-i.php">le portail de la physique en tunis 2</a></strong> </center> </span>
-  <!--<span class="sous-titre"><center> <h3>Le lien entre l’enseignant et l’élève</h3> </center> </span>-->
-  </h1>
-</div>
-<!-- navbar -->
-<nav class="navbar navbar-inverse "><!--pour fixer  le navbar on ajoute la class"navbar-fixed-top" a la balise <nav> et pour le justifier la classe "nav-justified" -->
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ab" >
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"></a>
-    </div>
-    <div class="navbar-collapse collapse" id="ab">
-      <ul class="nav navbar-nav">
-        <li>
-          <form class="navbar-form " role="search">
-        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo"><i class="glyphicon glyphicon-search"></i></button>
-        <div id="demo" class="collapse "> 
-          <input type="text" class="form-control" placeholder="chercher un document">
-        </div>
-        </form>
-        </li>
-        <li><a href="../signin.php"><span class="glyphicon glyphicon-user"></span> connexion</a></li>
-        <li class="active"><a href="../index-i.php"><span class="glyphicon glyphicon-home"></span> acceuil</a></li>
-        <li class="dropdown " ><!-- la liste espace eleve-->
-          <a href ="#" class="dropdown-toggle" data-toggle="dropdown">espace élève<span class="caret"></span>
-          </a><!--le dropdown menu necesite bootsrap.js -->
-          <ul class="dropdown-menu">
-            <!--college-->
-            <li class="hoverme"><a>collège<span class="caret"></span></a>
-              <div class="submenu2">
-                <ul>
-                  <li ><a  href="../niveau/7eme-annee.php">7ème de base</a></li>
-                  <li ><a  href="../niveau/8eme-annee.php">8ème de base</a></li>
-                  <li><a  href="../niveau/9eme-annee.php">9ème de base</a></li>
-                </ul>
-              </div>
-            </li>
 
-            <li><a  href="../niveau/1ere-annee.php">1ère secondaire</a></li>
-                 <!--2eme-->
-            <li class="hoverme"><a>2ème secondaire<span class="caret"></span></a>
-              <div class="submenu2">
-                <ul>
-                  <li><a href="../niveau/2i.php">Technologie de l’informatique</a></li> 
-                  <li><a href="../niveau/2s.php">Sciences</a></li> 
-                </ul>
-              </div>
-            </li>
-                 <!--3eme-->
-            <li class="hoverme"><a>3ème secondaire<span class="caret"></span></a>
-              <div class="submenu2" id="up">
-                <ul>
-                  <li><a  href="../niveau/3i.php">science informatique</a></li> 
-                  <li><a  href="../niveau/3m.php">mathématique</a></li> 
-                  <li><a  href="../niveau/3t.php">Technique</a></li> 
-                  <li><a  href="../niveau/3s.php">Sciences exprimentales</a></li>
-                </ul>
-              </div>
-            </li>
-                 <!--bac-->
-            <li class="hoverme"><a>4ème secondaire<span class="caret"></span></a>
-              <div class="submenu2" id="up">
-                <ul>
-                  <li><a  href="../niveau/4i.php">science informatique</a></li> 
-                  <li><a  href="../niveau/4m.php">mathématique</a></li> 
-                  <li><a  href="../niveau/4t.php">Technique</a></li> 
-                  <li><a  href="../niveau/4s.php">Sciences exprimentales</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown"><!-- la liste espace prof-->
-          <a href ="#" class="dropdown-toggle" data-toggle="dropdown">espace enseignant<span class="caret"></span>
-          </a><!--le dropdown menu necesite bootsrap.js -->
-          <ul class="dropdown-menu">
-            <li><a  href="../document-pédagogique.php">document pédagogique</a></li>
-                 <!--college-->
-            <li class="hoverme"><a>collège<span class="caret"></span></a>
-              <div class="submenu2">
-                <ul>
-                  <li ><a  href="../niveau/7eme-annee.php">7ème de base</a></li>
-                  <li ><a  href="../niveau/8eme-annee.php">8ème de base</a></li>
-                  <li><a  href="../niveau/9eme-annee.php">9ème de base</a></li>
-                </ul>
-              </div>
-            </li>
-
-            <li><a  href="../niveau/1ere-annee.php">1ère secondaire</a></li>
-                 <!--2eme-->
-            <li class="hoverme"><a>2ème secondaire<span class="caret"></span></a>
-              <div class="submenu2">
-                <ul>
-                  <li><a href="../niveau/2i.php">Technologie de l’informatique</a></li> 
-                  <li><a href="../niveau/2s.php">Sciences</a></li> 
-                </ul>
-              </div>
-            </li>
-                 <!--3eme-->
-            <li class="hoverme"><a>3ème secondaire<span class="caret"></span></a>
-              <div class="submenu2" id="up">
-                <ul>
-                  <li><a  href="../niveau/3i.php">science informatique</a></li> 
-                  <li><a  href="../niveau/3m.php">mathématique</a></li> 
-                  <li><a  href="../niveau/3t.php">Technique</a></li> 
-                  <li><a  href="../niveau/3s.php">Sciences exprimentales</a></li>
-                </ul>
-              </div>
-            </li>
-                 <!--bac-->
-            <li class="hoverme"><a>4ème secondaire<span class="caret"></span></a>
-              <div class="submenu2" id="up">
-                <ul>
-                  <li><a  href="../niveau/4i.php">science informatique</a></li> 
-                  <li><a  href="../niveau/4m.php">mathématique</a></li> 
-                  <li><a  href="../niveau/4t.php">Technique</a></li> 
-                  <li><a  href="../niveau/4s.php">Sciences exprimentales</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li><a href="../contact/contact.php"><span class="glyphicon glyphicon-earphone"></span> Contact</a></li>
-        <li><a href="../news.php"><span class="glyphicon glyphicon-info-sign"></span>actualités</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<script>
-$(document).ready(function(){
-  $("#demo").click(function(){
-    $(".collapse").collapse('toggle');
-  });
-  /*$(".collapse").on('shown.bs.collapse', function(){
-    alert('The collapsible content is now fully shown.');
-  });*/
-  $("#demo").on("show.bs.collapse", function(){
-    $(".btn-default").css('background-color: red;');
-  });
-});
-</script>
 <form class="jotform-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data" name="form_200973675497571" id="200973675497571" accept-charset="utf-8" autocomplete="on">
   <div role="main" class="form-all">
     <ul class="form-section page-section">
