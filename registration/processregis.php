@@ -56,6 +56,7 @@ if (isset($_POST['login'])) {
     if ($data) { //login user
       $_SESSION['name']=$user;
       $_SESSION['success']='Vous êtes connecté à votre compte';
+      $_SESSION['count']=1;
        header('location:index.php');
     }//end if $data
     else {$error1= "wrong password";var_dump($data);}
@@ -65,7 +66,7 @@ if (isset($_POST['login'])) {
 //logout
 if (isset($_GET['logout'])) {
   session_destroy();
-  unset($_SESSION['name']);
+  unset($_SESSION);
   header('location:index-i.php');
 }
 function verif($value,$colom,$connection){

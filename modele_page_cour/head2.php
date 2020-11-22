@@ -1,4 +1,7 @@
 <?php
+//var_dump(session_status());var_dump(isset($_SESSION));
+session_start();
+//var_dump(session_status());var_dump($_SESSION);
 $origin="";
  $a= htmlentities($_SERVER['PHP_SELF']);
  if((str_word_count($a,0,'0..9')>3)){$origin="../";
@@ -29,7 +32,7 @@ $origin="";
 <div class="head" style="padding-bottom: 1px;">
   <a  href="<?php echo $origin ?>niveau/upload.php" class="btn btn-info" role="button" title="cliquer sur ce bouton pour ajouter des documents à notre site" ><i class="fas fa-cloud"></i>partagez vos fichiers</a>
     <center>
-      <img src="<?php echo $origin ?>css/Tunisia_240-animated-flag-gifs.gif"  alt="république tunisienne" ></center>
+      <img class="img_size" src="<?php echo $origin ?>css/Tunisia_240-animated-flag-gifs.gif"  alt="république tunisienne" ></center>
     <!--Animated flag gif may be downloaded free of charge in this web-->
     <center id="img-title">la république tunisienne|miministère de l'éducation</center>
     <!--titre et sous titre-->
@@ -41,6 +44,33 @@ $origin="";
     ?>
     </h1>
 </div>
+<?php 
+$li="<li class='nav-item'>
+      <a class='nav-link' id='connect' href='".$origin."signin.php' title='connexion'><i class='fa fa-user-circle' aria-hidden='true'></i>
+          connexion </a></li>";
+$index="index-i.php";
+if (isset($_SESSION['success'])) :?>
+<?php 
+require_once $origin.'includes/connect_db.php';
+  $username=$_SESSION['name'];
+  $sql = "SELECT `image_url`  FROM `utilisateur` WHERE (`name`='$username')";
+  $res = $db->query($sql);
+  $data = $res->fetch();
+  $index="index.php";
+  $li='<li class="nav-item dropdown"><!--profil-->
+          <a class="navbar-brand dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="rounded-circle img_size" src="'. $origin.$data['image_url'] .' " alt="user img" style="width:40px;">'.$username .
+          '</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown1">
+            <li class="dropdown-item" >
+              <button class="nestedmenu btn btn-danger" href="'. $origin .'/index.php?logout='. 1 .' "> déconnection </button>
+            </li>
+          </ul>
+        </li>';
+       ?>
+
+<?php endif ?>
+
 <!-- navbar -->
   <nav class="navbar navbar-expand-md navbar-dark  bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,11 +78,9 @@ $origin="";
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class=" nav navbar-nav mr-auto ">
-          <li class='nav-item'>
-          <a class="nav-link" id="connect" href='<?php echo $origin ?>signin.php' title='connexion'><i class="fa fa-user-circle" aria-hidden="true"></i>
-          connexion </a></li>
+          <?php echo $li; ?>
         <li class="nav-item active"><!--home-->
-          <a class="nav-link" href="<?php echo $origin ?>index-i.php"> 
+          <a class="nav-link" href="<?php echo $origin.$index ?>"> 
             <svg class="bi bi-house-door" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 01.708 0l6 6a.5.5 0 01.146.354v7a.5.5 0 01-.5.5H9.5a.5.5 0 01-.5-.5v-4H7v4a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5v-7a.5.5 0 01.146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 01.5-.5h3a.5.5 0 01.5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" clip-rule="evenodd"/>
               <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 01.5-.5h1a.5.5 0 01.5.5z" clip-rule="evenodd"/>

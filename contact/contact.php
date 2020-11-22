@@ -1,7 +1,7 @@
 <?php 
 include('task.php');
 $title="contact";
-include '../modele_page_cour/head2.php';
+require_once '../modele_page_cour/head2.php';
  ?>
 <link rel="stylesheet" type="text/css" href="style_contact.css">
 

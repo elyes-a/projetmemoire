@@ -1,65 +1,65 @@
 <?php 
 require_once 'registration/processregis.php' ;
-/*var_dump(session_status());var_dump($_SESSION);*/
+//var_dump(session_status());var_dump($_SESSION);
+if (!isset($_SESSION['success'])){
+  header('location:index-i.php');
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
- <!-- Default Meta -->
- <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
- <meta content='width=device-width, initial-scale=1' name='viewport'/>
- <meta content='IE=edge' http-equiv='X-UA-Compatible'/>
- <link href='index.php' rel='canonical'/>
- <link rel="icon" href="css/logo site.png">
- <!--Licensed under MIT (https://github.com/twbs/bootstrap 4 /blob/master/LICENSE)-->
- <!--stylesheet bootstrap 4-->
- <link href='css/bootstrap.css' rel='stylesheet'/>
- <!-- exemple icon fontawasome <i class="fas fa-cloud"></i>
- The list of all Font Awesome icons can be found here: https://www.w3schools.com/icons/default.asp-->
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
- <link href="https://getbootstrap.com/docs/4.4/examples/carousel/carousel.css" rel="stylesheet">
- <link rel="stylesheet" href="css/styleindex.css">
- <!-- Title -->
- <title>le portail de la physique de tunis 2</title>
-<!--les sources javascript doit etre avant les script-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <!-- Default Meta -->
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    <meta content='width=device-width, initial-scale=1' name='viewport'/>
+    <meta content='IE=edge' http-equiv='X-UA-Compatible'/>
+  <!-- link -->
+    <link href='index.php' rel='canonical'/>
+    <link rel="icon" href="css/logo site.png">
+    <!--stylesheet bootstrap 4 -->
+    <!--Licensed under MIT (https://github.com/twbs/bootstrap 4 /blob/master/LICENSE)-->
+      <link href='css/bootstrap.css' rel='stylesheet'/>
+      <!-- exemple icon fontawasome <i class="fas fa-cloud"></i> The list of all Font Awesome icons can be found here: https://www.w3schools.com/icons/default.asp-->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+      <link href="https://getbootstrap.com/docs/4.4/examples/carousel/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styleindex.css">
+  <!-- Title -->
+    <title>le portail de la physique de tunis 2</title>
+  <!--les sources javascript doit etre avant les script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 </head>
-
 <body>
-<?php if (isset($_SESSION['success'])) :?>
-  <?php 
-    $username=$_SESSION['name'];
-    $sql = "SELECT `image_url`  FROM `utilisateur` WHERE (`name`='$username')";
-    $res = $db->query($sql);
-    $data = $res->fetch();
-  ?>
+<?php 
+  $username=$_SESSION['name'];
+  $sql = "SELECT `image_url`  FROM `utilisateur` WHERE (`name`='$username')";
+  $res = $db->query($sql);
+  $data = $res->fetch();
+?>
+<?php if ($_SESSION['count']==1) :?>
+  <?php $_SESSION['count']=++$_SESSION['count'] ; ?>
   <script type="text/javascript">
     Swal.fire(
     '<?php echo "Bienvenu!  ".$username ; ?>',
     '<?php echo $_SESSION['success'];?>',
     'success')
   </script>
-
-  <div style="background-color:white;padding-bottom: 1rem;">
-    <a href="niveau/upload.php" class="btn btn-info" role="button"><i class="fas fa-cloud"></i>  partagez vos fichiers</a>
-    <center>
-      <img src="css/Tunisia_240-animated-flag-gifs.gif" width="120" height="60" alt="république tunisienne" class="img_rep_tun">
-    </center>
-    <span><!--Animated flag gif may be downloaded free of charge in this web-->
-    <center> la république tunisienne|miministère de l'éducation </center></span>
-    <!--titre et sous titre-->
-    <h1>
-      <span class="titre"> <center> <strong> le portail de la physique en tunis 2</strong> </center> </span>
-      <span class="sous-titre"><center> <h3>Le lien entre l’enseignant et l’élève</h3> </center> </span>
-    </h1>
-<!-- navbar -->
+<?php endif ?>
+<div style="background-color:white;padding-bottom: 1rem;">
+  <a href="niveau/upload.php" class="btn btn-info" role="button"><i class="fas fa-cloud"></i>  partagez vos fichiers</a>
+  <center>
+    <img src="css/Tunisia_240-animated-flag-gifs.gif" width="120" height="60" alt="république tunisienne" class="img_rep_tun"></center>
+  <span><!--Animated flag gif may be downloaded free of charge in this web--><center> la république tunisienne|ministère de l'éducation </center></span>
+  <!--titre et sous titre-->
+  <h1>
+    <span class="titre"> <center> <strong> le portail de la physique en tunis 2</strong> </center> </span>
+    <span class="sous-titre"><center> <h3>Le lien entre l’enseignant et l’élève</h3> </center> </span>
+  </h1>
+  <!-- navbar -->
   <nav class="navbar navbar-expand-md navbar-dark  bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class=" nav navbar-nav mr-auto ">
         <li class="nav-item dropdown"><!--profil-->
@@ -93,8 +93,7 @@ require_once 'registration/processregis.php' ;
                   <a class="nestedmenu" href="niveau/8eme-annee.php">8ème de base</a></li>
                 <li class="dropdown-item">
                   <a class="nestedmenu" href="niveau/9eme-annee.php">9ème de base</a></li>
-              </ul>
-            </li>
+              </ul></li>
             <li class="dropdown-item" ><a class="nestedmenu" href="niveau/1ere-annee.php">1ère secondaire</a></li>
             <li class="dropdown-item dropdown"><!--2-->
               <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">2ème secondaire</a>
@@ -121,16 +120,13 @@ require_once 'registration/processregis.php' ;
               <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
                 <li class="dropdown-item">
                   <a class="nestedmenu" href="niveau/4i.php">science informatique</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/4m.php">mathématique</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/4t.php">Technique</a></li>
-                <li class="dropdown-item">
-                  <a class="nestedmenu" href="niveau/4s">Sciences exprimentales</a></li>
-              </ul></li>
-          </ul>
+                <li class="dropdown-item"><a class="nestedmenu" href="niveau/4m.php">mathématique</a></li>
+                <li class="dropdown-item"><a class="nestedmenu" href="niveau/4t.php">Technique</a></li>
+                <li class="dropdown-item"><a class="nestedmenu" href="niveau/4s">Sciences exprimentales</a></li>
+              </ul>
+              </li>
+          </ul><!--match can't be found because the lengith of the match-->
         </li>
-        
         <li class='nav-item'><!--contact-->
           <a class="nav-link" href='contact/contact.php' title='contact'>contact </a></li>
         <li class="nav-item" ><!--document pédagogique-->
@@ -149,9 +145,8 @@ require_once 'registration/processregis.php' ;
       <form class="navbar-form navbar-left" role="search">
       <input type="text" class="form-control" id="cherche" placeholder="  chercher un document">
       </form>
-    </div>
   </nav>
-<?php endif ?>
+  </div>
 <main role="main">
   <div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel" data-pause="hover">
     <ol class="carousel-indicators">
